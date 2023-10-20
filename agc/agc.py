@@ -29,13 +29,13 @@ import numpy as np
 np.int = int
 
 
-__author__ = "Your Name"
+__author__ = "Noura NOUALI"
 __copyright__ = "Universite Paris Diderot"
-__credits__ = ["Your Name"]
+__credits__ = ["Noura NOUALI"]
 __license__ = "GPL"
 __version__ = "1.0.0"
-__maintainer__ = "Your Name"
-__email__ = "your@email.fr"
+__maintainer__ = "Noura NOUALI"
+__email__ = "noualinoura@gmail.com"
 __status__ = "Developpement"
 
 
