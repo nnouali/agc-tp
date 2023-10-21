@@ -185,12 +185,30 @@ def main(): # pragma: no cover
     Main program function
     """
     # Get arguments
-    args = get_arguments() 
-    sequences = read_fasta(args.amplicon_file, args.minseqlen)
-    for seq in sequences:
-        print(seq)
-    dereplication = dereplication_fulllength(args.amplicon_file, args.minseqlen, args.mincount)
-    for seq, count in dereplication:
-        print(f"Sequence : {seq}, Ncount : {count}")
+    args = get_arguments()
+    # Votre programme ici
+    
+    for sequence, count in dereplication_fulllength(args.amplicon_file, args.minseqlen, args.mincount):
+        print(f"Sequence: {sequence}")
+        print(f"Count: {count}")
+    print(len(sequence))
+    print("")
+
+    alignment_list = ["AGCTAGCT", "AGCTAGTT"]
+    identity = get_identity(alignment_list)
+    print(f"Identity: {identity}%")
+
+    chunk_size = 0  # Not used this year
+    kmer_size = 0   # Not used this year
+    otu_list = abundance_greedy_clustering(args.amplicon_file, args.minseqlen, args.mincount, chunk_size, kmer_size)
+
+    # Affichage des OTUs et de leurs comptages
+    for otu in otu_list:
+        sequence, count = otu
+        print(f"OTU: {sequence}")
+        print(f"Count: {count}")
+    
+    write_OTU(otu_list, args.output_file)
+
 if __name__ == '__main__':
     main()
